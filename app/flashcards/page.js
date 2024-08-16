@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useUser } from '@clerk/nextjs'
-import { useSearchParams } from 'next/navigation'
+import { useState, useEffect } from 'react';
+import { useUser } from '@clerk/nextjs';
+import { useSearchParams } from 'next/navigation';
 import {
   Container,
   Grid,
@@ -11,39 +11,41 @@ import {
   CardContent,
   Typography,
   Box,
-} from '@mui/material'
-import { collection, doc, getDocs } from 'firebase/firestore'
-import { db } from '@/firebase'
+} from '@mui/material';
+import { collection, doc, getDocs } from 'firebase/firestore';
+import { db } from '@/firebase';
 
 export default function Flashcard() {
-  const { isLoaded, isSignedIn, user } = useUser()
-  const [flashcards, setFlashcards] = useState([])
-  const [flipped, setFlipped] = useState({})
-  const searchParams = useSearchParams()
-  const search = searchParams.get('id')
+  const { isLoaded, isSignedIn, user } = useUser();
+  const [flashcards, setFlashcards] = useState([]);
+  const [flipped, setFlipped] = useState({});
+  const searchParams = useSearchParams();
+  const search = searchParams.get('id');
 
   useEffect(() => {
     async function getFlashcard() {
-      if (!search || !user) return
+      if (!search || !user) return;
 
-      const colRef = collection(doc(collection(db, 'users'), user.id), search)
-      const docs = await getDocs(colRef)
-      const flashcards = []
+      const colRef = collection(doc(collection(db, 'users'), user.id), search);
+      const docs = await getDocs(colRef);
+      const flashcards = [];
       docs.forEach((doc) => {
-        flashcards.push({ id: doc.id, ...doc.data() })
-      })
-      setFlashcards(flashcards)
+        flashcards.push({ id: doc.id, ...doc.data() });
+      });
+      setFlashcards(flashcards);
     }
 
-    getFlashcard()
-  }, [search, user])
+    if (isLoaded && isSignedIn) {
+      getFlashcard();
+    }
+  }, [search, user, isLoaded, isSignedIn]);
 
   const handleCardClick = (id) => {
     setFlipped((prev) => ({
       ...prev,
       [id]: !prev[id],
-    }))
-  }
+    }));
+  };
 
   return (
     <Container maxWidth="md">
@@ -101,5 +103,5 @@ export default function Flashcard() {
         ))}
       </Grid>
     </Container>
-  )
+  );
 }
