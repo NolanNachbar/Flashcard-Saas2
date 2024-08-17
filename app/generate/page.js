@@ -92,16 +92,27 @@ export default function Generate() {
           Generate Flashcards
         </Typography>
         <TextField
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          label="Enter text"
-          fullWidth
-          multiline
-          rows={4}
-          color="white"
-          variant="outlined"
-          sx={{ mb: 2 }}
-        />
+  value={text}
+  onChange={(e) => setText(e.target.value)}
+  label="Enter text"
+  fullWidth
+  multiline
+  rows={4}
+  variant="outlined"
+  sx={{
+    mb: 2,
+    '& .MuiInputBase-input': {
+      color: 'white',
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'white',
+    },
+    '& .MuiInputLabel-root': {
+      color: 'white',
+    },
+  }}
+/>
+
         <Button
           variant="contained"
           color="primary"
