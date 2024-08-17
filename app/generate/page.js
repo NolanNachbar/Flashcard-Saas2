@@ -98,6 +98,7 @@ export default function Generate() {
           fullWidth
           multiline
           rows={4}
+          color="white"
           variant="outlined"
           sx={{ mb: 2 }}
         />
