@@ -1,10 +1,9 @@
-'use client' // Client Component
+'use client'; // Client Component
 
-import React from "react";
-import { Container, Box } from "@mui/material";
+import React, { useEffect } from "react";
+import { Container, Box, Typography } from "@mui/material";
 import { SignUp, useAuth } from "@clerk/nextjs";
-import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
 export default function SignUpPage() {
   const { isSignedIn } = useAuth();
@@ -20,31 +19,37 @@ export default function SignUpPage() {
   return (
     <>
       <Box
-        style={{
+        sx={{
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           minHeight: "100vh",
-          minWidth: "100vw", // Ensures the background covers the full width
-          position: "absolute", // Makes sure it spans the entire viewport
+          minWidth: "100vw",
+          position: "absolute",
           top: 0,
           left: 0,
           backgroundImage: 'url("/bg3.jpg")',
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          color: "#fff",
         }}
       >
         <Container
-          style={{
+          sx={{
             display: "flex",
+            flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
-            padding: "20px",
-            background: "rgba(255, 255, 255, 0.1)", // Optional overlay for readability
-            borderRadius: "8px",
+            padding: "40px",
+            background: "rgba(0, 0, 0, 0.7)",
+            borderRadius: "12px",
+            textAlign: "center",
           }}
         >
+          <Typography variant="h2" sx={{ mb: 4 }}>
+            Sign Up to Get Started
+          </Typography>
           <SignUp />
         </Container>
       </Box>
