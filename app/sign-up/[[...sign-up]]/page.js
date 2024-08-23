@@ -1,20 +1,21 @@
-'use client'; // Client Component
+'use client' // Client Component
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Box } from "@mui/material";
-import { SignIn, useAuth } from "@clerk/nextjs";
+import { SignUp, useAuth } from "@clerk/nextjs";
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-export default function SignInPage() {
-  const { isLoaded, isSignedIn } = useAuth();
+export default function SignUpPage() {
+  const { isSignedIn } = useAuth();
   const router = useRouter();
 
-  // Redirection to flashcards after signin
+  // Redirection to flashcards after signup
   useEffect(() => {
-    if (isLoaded && isSignedIn) {
+    if (isSignedIn) {
       router.push('/flashcards'); // Redirect to flashcards page
     }
-  }, [isLoaded, isSignedIn, router]);
+  }, [isSignedIn, router]);
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function SignInPage() {
             borderRadius: "8px",
           }}
         >
-          <SignIn />
+          <SignUp />
         </Container>
       </Box>
     </>
