@@ -45,13 +45,10 @@ export default function Home() {
     <Container maxWidth="md" sx={{ padding: 0 }}>
       <HeroSection>
         <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to Flashcard SaaS
-        </Typography>
-        <Typography variant="h4" component="p" gutterBottom>
-          Generate custom flashcards instantly using AI.
+          Welcome to CrdzAI
         </Typography>
         <Typography variant="h6" component="p" sx={{ mb: 4 }}>
-          Sign up for our Pro plan to unlock premium features.
+          Sign up for acces to the AI!
         </Typography>
 
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2 }}>

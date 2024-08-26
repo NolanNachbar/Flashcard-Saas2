@@ -1,10 +1,9 @@
-'use client' //Client Component
+'use client'
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation'
 import { useSearchParams} from 'next/navigation';
 import { Container, Typography, Box, CircularProgress} from "@mui/material";
-
 
 const ResultPage = () => {
     const router = useRouter()

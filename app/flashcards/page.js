@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "/app/firebase-config";
 import { useRouter } from "next/navigation";
+
 import {
   Container,
   Card,
@@ -255,7 +256,10 @@ export default function Flashcards() {
             "&:hover": { backgroundColor: "#eaeaea" },
           }}
         >
-          <img src="/images/logo.png" alt="Logo" style={{ height: "120px" }} />
+
+        <img src="/favicon.ico" alt="Logo" style={{ height: "120px" }} />
+
+
         </Button>
         <Box display="flex" alignItems="center" gap={2}>
           <Typography variant="body1" fontWeight="bold">
@@ -342,7 +346,6 @@ export default function Flashcards() {
           </motion.div>
         )}
 
-        {/* Manual Flashcard Creation Feature (for all users) */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -446,6 +449,15 @@ export default function Flashcards() {
                 >
                   {editingFlashcard ? "Update Flashcard" : "Add Flashcard"}
                 </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  sx={{ marginTop: 2, marginLeft: 2 }}
+                  onClick={() => router.push("/viewcards")}
+                >
+                  View All Cards
+                </Button>
+
               </form>
             </CardContent>
           </Card>
