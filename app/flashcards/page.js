@@ -297,6 +297,9 @@ export default function Flashcards() {
           )}
         </Box>
       </Box>
+            <Typography variant="h6" gutterBottom>
+                Sign in for access to a flashcard generating AI!
+        </Typography>
       <Container maxWidth="lg" sx={{ mt: 10 }}>
         {/* Flashcard Generation Feature (only for signed-in users) */}
         {isSignedIn && (
@@ -463,9 +466,6 @@ export default function Flashcards() {
           </Card>
         </motion.div>
 
-        <Typography variant="h6" gutterBottom>
-                Sign in for acces to a flashcard generating AI!
-        </Typography>
 
         {/* Flashcard Display Section */}
         <motion.div
